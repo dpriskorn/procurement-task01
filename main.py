@@ -149,13 +149,12 @@ class Procurement(BaseModel):
 
     Time is a string which conforms to the most widely used ISO standard.
 
-    In my first approach the contact details and organization information was duplicated on each bid.
-    Using a deduplicated approach this could be avoided but
-    then we would need a catalog of organizations which perhaps would quickly go out of date.
+    In my first iteration the contact details and organization information
+    was duplicated on each bid.
 
-    Depending on the setup of the system there are ways to duplication of data and information
-    being out of date, e.g. by storing the information on suppliers on every procurement and
-    referring to a procurement unique supplier ID in the bids.
+    On my second iteration I avoided that by instead storing the
+    supplier information on the procurement instead and using a unique id
+    to refer to it from the bids.
     """
 
     lots: list[Lot]
