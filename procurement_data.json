@@ -8,19 +8,22 @@
           "fixed_prices": [
             {
               "name": "washing of carpet",
-              "price": 150,
+              "price": 150.0,
+              "currency": "SEK",
               "details": "price per carpet up to 2x2m"
             },
             {
               "name": "cleaning of window",
-              "price": 150,
+              "price": 150.0,
+              "currency": "SEK",
               "details": "price per window up to 2x2m"
             }
           ],
           "hour_prices": [
             {
               "name": "standard hourly rate",
-              "price": 150,
+              "price": 150.0,
+              "currency": "SEK",
               "details": "cleaning of floors and emtyping trashcans"
             }
           ],
@@ -46,19 +49,22 @@
           "fixed_prices": [
             {
               "name": "washing of carpet",
-              "price": 175,
+              "price": 175.0,
+              "currency": "SEK",
               "details": "price per carpet up to 2x2m"
             },
             {
               "name": "cleaning of window",
-              "price": 175,
+              "price": 175.0,
+              "currency": "SEK",
               "details": "price per window up to 2x2m"
             }
           ],
           "hour_prices": [
             {
               "name": "standard hourly rate",
-              "price": 175,
+              "price": 175.0,
+              "currency": "SEK",
               "details": "cleaning of floors and emtyping trashcans"
             }
           ],
@@ -84,19 +90,22 @@
           "fixed_prices": [
             {
               "name": "washing of carpet",
-              "price": 195,
+              "price": 195.0,
+              "currency": "SEK",
               "details": "price per carpet up to 2x2m"
             },
             {
               "name": "cleaning of window",
-              "price": 175,
+              "price": 175.0,
+              "currency": "SEK",
               "details": "price per window up to 2x2m"
             }
           ],
           "hour_prices": [
             {
               "name": "standard hourly rate",
-              "price": 195,
+              "price": 195.0,
+              "currency": "SEK",
               "details": "cleaning of floors and emtyping trashcans"
             }
           ],
@@ -122,19 +131,22 @@
           "fixed_prices": [
             {
               "name": "washing of carpet",
-              "price": 195,
+              "price": 195.0,
+              "currency": "SEK",
               "details": "price per carpet up to 2x2m"
             },
             {
               "name": "cleaning of window",
-              "price": 175,
+              "price": 175.0,
+              "currency": "SEK",
               "details": "price per window up to 2x2m"
             }
           ],
           "hour_prices": [
             {
               "name": "standard hourly rate",
-              "price": 195,
+              "price": 195.0,
+              "currency": "SEK",
               "details": "cleaning of floors and emtyping trashcans"
             }
           ],
@@ -166,19 +178,22 @@
           "fixed_prices": [
             {
               "name": "washing of carpet",
-              "price": 150,
+              "price": 150.0,
+              "currency": "SEK",
               "details": "price per carpet up to 2x2m"
             },
             {
               "name": "cleaning of window",
-              "price": 150,
+              "price": 150.0,
+              "currency": "SEK",
               "details": "price per window up to 2x2m"
             }
           ],
           "hour_prices": [
             {
               "name": "standard hourly rate",
-              "price": 150,
+              "price": 150.0,
+              "currency": "SEK",
               "details": "cleaning of floors and emtyping trashcans"
             }
           ],
@@ -204,19 +219,22 @@
           "fixed_prices": [
             {
               "name": "washing of carpet",
-              "price": 175,
+              "price": 175.0,
+              "currency": "SEK",
               "details": "price per carpet up to 2x2m"
             },
             {
               "name": "cleaning of window",
-              "price": 175,
+              "price": 175.0,
+              "currency": "SEK",
               "details": "price per window up to 2x2m"
             }
           ],
           "hour_prices": [
             {
               "name": "standard hourly rate",
-              "price": 175,
+              "price": 175.0,
+              "currency": "SEK",
               "details": "cleaning of floors and emtyping trashcans"
             }
           ],
@@ -242,19 +260,22 @@
           "fixed_prices": [
             {
               "name": "washing of carpet",
-              "price": 215,
+              "price": 215.0,
+              "currency": "SEK",
               "details": "price per carpet up to 2x2m"
             },
             {
               "name": "cleaning of window",
-              "price": 135,
+              "price": 135.0,
+              "currency": "SEK",
               "details": "price per window up to 2x2m"
             }
           ],
           "hour_prices": [
             {
               "name": "standard hourly rate",
-              "price": 185,
+              "price": 185.0,
+              "currency": "SEK",
               "details": "cleaning of floors and emtyping trashcans"
             }
           ],
@@ -281,5 +302,6 @@
   ],
   "name": "Stockholm municipality cleaning procurement 2024",
   "details": "split in two lots, north and south",
-  "format_version": "1"
+  "format_version": "1",
+  "organization_id": 1
 }

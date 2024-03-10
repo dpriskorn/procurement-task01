@@ -35,17 +35,11 @@ Stockholm. The one chosen as winner for northern Stockholm was one of the
 winners for the other part as well.
 """
 
-"""
-Implementation notes:
-We assume this code is only meant to support Swedish procumenents 
-so we don't bother with the complexity of currency.
-
-Prices are in SEK, ören is not supported. 
-This is to avoid floating point calculation errors and keep the complexity low.
-"""
 from pprint import pprint
 
 from pydantic import BaseModel
+
+from errors import BidError, LotError
 
 
 class ContactPerson(BaseModel):
@@ -75,24 +69,26 @@ class Supplier(BaseModel):
 
 
 class ListPrice(BaseModel):
-    """Prices are in SEK, ören is not supported"""
+    """We default to SEK"""
+
     name: str
-    price: int
+    price: float
+    currency: str = "SEK"
     details: str
 
 
 class Bid(BaseModel):
+    """Bids are placed by suppliers for a specific lot."""
+
     fixed_prices: list[ListPrice]
     hour_prices: list[ListPrice]
     organization: Supplier
     winner: bool = False
 
 
-class BidError(BaseException):
-    pass
-
-
 class Lot(BaseModel):
+    """Lots are part of a procurement."""
+
     name: str
     details: str
     bids: list[Bid]
@@ -125,26 +121,34 @@ class Lot(BaseModel):
     @property
     def get_winning_bids_as_dictionaries(self):
         winning_bids = list()
-        for bid in self.bids:
-            if bid.winner is True:
-                winning_bids.append(bid.model_dump())
+        for bid in self.get_winning_bids:
+            winning_bids.append(bid.model_dump())
         return winning_bids
-
-
-class LotError(BaseException):
-    pass
 
 
 class Procurement(BaseModel):
     """This models a generic procurement with lots and details.
+
+    Implementation notes:
+
     Since we store this information in MongoDB we
     want to keep track of the version so we can easily
     let improve the format over time and migrate older
-    formatted data to new formats if we change the syntax in the future."""
+    formatted data to new formats if we change the syntax in the future.
+
+    We assume there is some kind of internal ID
+    to keep procurements organized according to organization and country.
+
+    We assume all text is in a single language.
+    This is not ideal if the database
+    and system should supports multiple countries.
+    """
+
     lots: list[Lot]
     name: str
     details: str
-    format_version: str
+    format_version: str = "1"
+    organization_id: int = 1
 
     def check(self):
         """Check that all lots have at least one winning bid,
@@ -164,6 +168,9 @@ class Procurement(BaseModel):
                 pprint(lot.get_winning_bids_as_dictionaries)
 
 
+#############
+# Mock data #
+#############
 # North
 # bidder Alltvätt
 julie = ContactPerson(name="Julie Svensson", phone="12345", email="julie@alltvatt.se")
@@ -190,13 +197,13 @@ alltvatt_north_bid = Bid(
     fixed_prices=[alltvatt_carpet, alltvatt_window],
     hour_prices=[alltvatt_hourly],
     organization=alltvatt,
-    winner=True
+    winner=True,
 )
 alltvatt_south_bid = Bid(
     fixed_prices=[alltvatt_carpet, alltvatt_window],
     hour_prices=[alltvatt_hourly],
     organization=alltvatt,
-    winner=True
+    winner=True,
 )
 # bidder Städ AB
 anna = ContactPerson(name="Anna Svensson", phone="12345", email="anna@stad.se")
@@ -228,7 +235,7 @@ stad_ab_south_bid = Bid(
     fixed_prices=[stad_ab_carpet, stad_ab_window],
     hour_prices=[stad_ab_hourly],
     organization=stad_ab,
-    winner=True
+    winner=True,
 )
 # bidder Totalt rent AB
 peter = ContactPerson(name="Peter Ren", phone="12345", email="peter@totalt.se")
@@ -239,7 +246,7 @@ totalt_ab = Supplier(
     city="Norrtälje",
     organization_code="123456-1211",
     contact_persons=[peter],
-    bankruptcy=True
+    bankruptcy=True,
 )
 totalt_ab_carpet = ListPrice(
     name="washing of carpet", price=195, details="price per carpet up to 2x2m"
@@ -284,7 +291,9 @@ rentav_ab_bid = Bid(
     organization=rentav_ab,
 )
 # bidder Cleaning House AB
-susann = ContactPerson(name="Susann Petterson", phone="12345", email="susann@cleaning.se")
+susann = ContactPerson(
+    name="Susann Petterson", phone="12345", email="susann@cleaning.se"
+)
 cleaning_house = Supplier(
     name="Cleaning House AB",
     adress="Allvägen 4",
@@ -292,7 +301,7 @@ cleaning_house = Supplier(
     city="Norrtälje",
     organization_code="123456-1211",
     contact_persons=[susann],
-    fskatt=False
+    fskatt=False,
 )
 cleaning_house_carpet = ListPrice(
     name="washing of carpet", price=215, details="price per carpet up to 2x2m"
@@ -332,7 +341,6 @@ procurement = Procurement(
     name="Stockholm municipality cleaning procurement 2024",
     details="split in two lots, north and south",
     lots=[north, south],
-    format_version="1"
 )
 
 # Check and print
