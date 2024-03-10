@@ -327,5 +327,5 @@ procurement.print_winning_bids()
 
 # Write the JSON data to a file
 with open("procurement_data.json", "w") as file:
-    file.write(procurement.model_dump_json())
+    file.write(procurement.model_dump_json(indent=2))
 print("Wrote to file")
