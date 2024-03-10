@@ -154,7 +154,7 @@
             "fskatt": true,
             "bankruptcy": false
           },
-          "winner": true
+          "winner": false
         }
       ]
     },
@@ -198,7 +198,7 @@
             "fskatt": true,
             "bankruptcy": false
           },
-          "winner": false
+          "winner": true
         },
         {
           "fixed_prices": [

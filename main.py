@@ -182,6 +182,7 @@ alltvatt_south_bid = Bid(
     fixed_prices=[alltvatt_carpet, alltvatt_window],
     hour_prices=[alltvatt_hourly],
     organization=alltvatt,
+    winner=True
 )
 # bidder Städ AB
 anna = ContactPerson(name="Anna Svensson", phone="12345", email="anna@stad.se")
@@ -267,7 +268,6 @@ rentav_ab_bid = Bid(
     fixed_prices=[rentav_ab_carpet, rentav_ab_window],
     hour_prices=[rentav_ab_hourly],
     organization=rentav_ab,
-    winner=True
 )
 # bidder Cleaning House AB
 susann = ContactPerson(name="Susann Petterson", phone="12345", email="susann@cleaning.se")
@@ -299,7 +299,8 @@ cleaning_house_bid = Bid(
 # 4 suppliers in total
 # totalt_ab, rentav_ab only bid on the north lot
 # cleaning_house only bid on the south lot
-# alltvatt_bid won the bid on
+# alltvatt_bid won the bid on both north and south
+#
 north = Lot(
     name="north",
     details="offices in the north part of the city",
