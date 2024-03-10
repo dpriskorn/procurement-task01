@@ -395,7 +395,7 @@ procurement = Procurement(
 )
 
 # Check and print
-print(procurement.check())
+procurement.check()
 # print("All procurement information")
 # pprint(procurement.model_dump())
 # procurement.print_winning_bids()
