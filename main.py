@@ -56,16 +56,27 @@ class Supplier(BaseModel):
 
     The organization_code is a standard code needed to check
     for F-skatt and bankruptcy in Sweden
+
+    Countries are stated both as human readable strings
+    and with Wikidata QID to avoid string parsing of country names
+    in any language which is probably error-prone and make the
+    developers tear their hair out in no time.
     """
 
     name: str
     adress: str
     city: str
     postcode: str
+    country: str = "Sweden"
+    country_wikidata: str = "Q34"
     contact_persons: list[ContactPerson]
     organization_code: str
     fskatt: bool = True
     bankruptcy: bool = False
+
+    @property
+    def address_line(self):
+        return f"{self.adress}, {self.postcode}, {self.country}"
 
 
 class ListPrice(BaseModel):
