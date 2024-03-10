@@ -280,5 +280,6 @@
     }
   ],
   "name": "Stockholm municipality cleaning procurement 2024",
-  "details": "split in two lots, north and south"
+  "details": "split in two lots, north and south",
+  "format_version": "1"
 }

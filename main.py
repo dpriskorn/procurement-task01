@@ -109,6 +109,11 @@ class Lot(BaseModel):
             if not bid.organization.fskatt:
                 raise BidError(f"{bid.organization.name} is not registered for F-skatt")
 
+    def check_winning_bids_have_not_filed_for_bankruptcy(self):
+        for bid in self.get_winning_bids:
+            if bid.organization.bankruptcy:
+                raise BidError(f"{bid.organization.name} has filed for bankruptcy")
+
     @property
     def get_winning_bids(self):
         winning_bids = list()
@@ -131,15 +136,25 @@ class LotError(BaseException):
 
 
 class Procurement(BaseModel):
+    """This models a generic procurement with lots and details.
+    Since we store this information in MongoDB we
+    want to keep track of the version so we can easily
+    let improve the format over time and migrate older
+    formatted data to new formats if we change the syntax in the future."""
     lots: list[Lot]
     name: str
     details: str
+    format_version: str
 
     def check(self):
+        """Check that all lots have at least one winning bid,
+        that the winners have F-skatt registration and that
+        they did not file for bankruptcy"""
         for lot in self.lots:
             if not lot.at_least_one_winning_bid:
                 raise LotError(f"Lot '{lot.name}' does not have a winning bid")
             lot.check_winning_bids_have_fskatt()
+            lot.check_winning_bids_have_not_filed_for_bankruptcy()
         print("All lots passed the checks")
 
     def print_winning_bids(self):
@@ -317,6 +332,7 @@ procurement = Procurement(
     name="Stockholm municipality cleaning procurement 2024",
     details="split in two lots, north and south",
     lots=[north, south],
+    format_version="1"
 )
 
 # Check and print
