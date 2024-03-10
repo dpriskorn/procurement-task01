@@ -41,7 +41,7 @@ We assume this code is only meant to support Swedish procumenents
 so we don't bother with the complexity of currency.
 
 Prices are in SEK, ören is not supported. 
-This is to avoid floating point calculation errors and keep complexity low.
+This is to avoid floating point calculation errors and keep the complexity low.
 """
 from pprint import pprint
 
@@ -135,8 +135,7 @@ class Procurement(BaseModel):
     name: str
     details: str
 
-    @property
-    def check(self) -> bool:
+    def check(self):
         for lot in self.lots:
             if not lot.at_least_one_winning_bid:
                 raise LotError(f"Lot '{lot.name}' does not have a winning bid")
@@ -299,8 +298,8 @@ cleaning_house_bid = Bid(
 # 4 suppliers in total
 # totalt_ab, rentav_ab only bid on the north lot
 # cleaning_house only bid on the south lot
-# alltvatt_bid won the bid on both north and south
-#
+# alltvatt won the bid on both of the lots
+# stad_ab won bid on the south lot
 north = Lot(
     name="north",
     details="offices in the north part of the city",
@@ -321,7 +320,7 @@ procurement = Procurement(
 )
 
 # Check and print
-print(procurement.check)
+print(procurement.check())
 print("All procurement information")
 pprint(procurement.model_dump())
 procurement.print_winning_bids()
