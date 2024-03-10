@@ -147,7 +147,7 @@ class Procurement(BaseModel):
     This is not ideal if the database
     and system should supports multiple countries.
 
-    Time is a string which conforms to the most widely used ISO standard.
+    Time is a string which conforms to the widely used ISO 8601 standard.
 
     In my first iteration the contact details and organization information
     was duplicated on each bid.
