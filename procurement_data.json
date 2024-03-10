@@ -29,7 +29,7 @@
           ],
           "supplier": 1,
           "winner": true,
-          "time": "2024-03-10T12:57:55"
+          "time": "2024-03-10T00:00:00"
         },
         {
           "fixed_prices": [
@@ -56,7 +56,7 @@
           ],
           "supplier": 2,
           "winner": false,
-          "time": "2024-03-10T12:57:55"
+          "time": "2024-03-10T00:00:00"
         },
         {
           "fixed_prices": [
@@ -83,7 +83,7 @@
           ],
           "supplier": 3,
           "winner": false,
-          "time": "2024-03-10T12:57:55"
+          "time": "2024-03-10T00:00:00"
         },
         {
           "fixed_prices": [
@@ -110,7 +110,7 @@
           ],
           "supplier": 4,
           "winner": false,
-          "time": "2024-03-10T12:57:55"
+          "time": "2024-03-10T00:00:00"
         }
       ]
     },
@@ -143,7 +143,7 @@
           ],
           "supplier": 1,
           "winner": true,
-          "time": "2024-03-10T12:57:55"
+          "time": "2024-03-10T00:00:00"
         },
         {
           "fixed_prices": [
@@ -170,7 +170,7 @@
           ],
           "supplier": 2,
           "winner": true,
-          "time": "2024-03-10T12:57:55"
+          "time": "2024-03-10T00:00:00"
         },
         {
           "fixed_prices": [
@@ -197,7 +197,7 @@
           ],
           "supplier": 5,
           "winner": false,
-          "time": "2024-03-10T12:57:55"
+          "time": "2024-03-10T00:00:00"
         }
       ]
     }
@@ -206,7 +206,7 @@
   "details": "split in two lots, north and south",
   "format_version": "1",
   "organization_id": 1,
-  "time": "2024-03-10T12:57:55",
+  "time": "2024-03-10T00:00:00",
   "suppliers": [
     {
       "id": 1,

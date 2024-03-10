@@ -173,7 +173,9 @@ class Procurement(BaseModel):
                 for supplier in self.suppliers:
                     if supplier.id == supplier_id:
                         if not supplier.fskatt:
-                            raise BidError(f"{supplier.name} is not registered for F-skatt")
+                            raise BidError(
+                                f"{supplier.name} is not registered for F-skatt"
+                            )
 
     def check_organization_behind_winning_bids_have_not_filed_for_bankruptcy(self):
         for lot in self.lots:
@@ -205,7 +207,7 @@ class Procurement(BaseModel):
 #############
 # Mock data #
 #############
-now = datetime.utcnow()
+now = datetime.utcnow().replace(day=10, hour=0, minute=0, second=0)
 time = datetime.isoformat(now, timespec="seconds")
 # North
 # bidder Alltvätt
@@ -283,7 +285,6 @@ stad_ab_south_bid = Bid(
 peter = ContactPerson(name="Peter Ren", phone="12345", email="peter@totalt.se")
 totalt_ab = Supplier(
     id=3,
-
     name="Totalt rent AB",
     adress="Allvägen 3",
     postcode="12345",
@@ -313,7 +314,6 @@ totalt_ab_bid = Bid(
 tomas = ContactPerson(name="Tomas Persson", phone="12345", email="tomas@rentav.se")
 rentav_ab = Supplier(
     id=4,
-
     name="Rent av AB",
     adress="Allvägen 4",
     postcode="12345",
@@ -344,7 +344,6 @@ susann = ContactPerson(
 )
 cleaning_house = Supplier(
     id=5,
-
     name="Cleaning House AB",
     adress="Allvägen 4",
     postcode="12345",
@@ -393,14 +392,14 @@ procurement = Procurement(
     details="split in two lots, north and south",
     lots=[north, south],
     time=time,
-    suppliers=[alltvatt, stad_ab, rentav_ab, cleaning_house, totalt_ab]
+    suppliers=[alltvatt, stad_ab, rentav_ab, cleaning_house, totalt_ab],
 )
 
 # Check and print
 print(procurement.check())
-print("All procurement information")
-pprint(procurement.model_dump())
-procurement.print_winning_bids()
+# print("All procurement information")
+# pprint(procurement.model_dump())
+# procurement.print_winning_bids()
 
 # Write the JSON data to a file
 with open("procurement_data.json", "w") as file:
