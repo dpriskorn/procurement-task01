@@ -350,14 +350,14 @@ cleaning_house_bid = Bid(
 # alltvatt won the bid on both of the lots
 # stad_ab won bid on the south lot
 north = Lot(
-    name="north",
-    details="offices in the north part of the city",
+    name="Stockholm north",
+    details="municipality offices in the north part of the city",
     bids=[alltvatt_north_bid, stad_ab_north_bid, totalt_ab_bid, rentav_ab_bid],
 )
 # 3 suppliers in total
 south = Lot(
-    name="south",
-    details="offices in the north part of the city",
+    name="Stockholm south",
+    details="municipality in the north part of the city",
     bids=[alltvatt_south_bid, stad_ab_south_bid, cleaning_house_bid],
 )
 # Overlap was: 2 suppliers for the lots.

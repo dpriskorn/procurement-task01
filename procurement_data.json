@@ -1,8 +1,8 @@
 {
   "lots": [
     {
-      "name": "north",
-      "details": "offices in the north part of the city",
+      "name": "Stockholm north",
+      "details": "municipality offices in the north part of the city",
       "bids": [
         {
           "fixed_prices": [
@@ -46,7 +46,7 @@
             "bankruptcy": false
           },
           "winner": true,
-          "time": "2024-03-10T12:34:56"
+          "time": "2024-03-10T12:36:28"
         },
         {
           "fixed_prices": [
@@ -90,7 +90,7 @@
             "bankruptcy": false
           },
           "winner": false,
-          "time": "2024-03-10T12:34:56"
+          "time": "2024-03-10T12:36:28"
         },
         {
           "fixed_prices": [
@@ -134,7 +134,7 @@
             "bankruptcy": true
           },
           "winner": false,
-          "time": "2024-03-10T12:34:56"
+          "time": "2024-03-10T12:36:28"
         },
         {
           "fixed_prices": [
@@ -178,13 +178,13 @@
             "bankruptcy": false
           },
           "winner": false,
-          "time": "2024-03-10T12:34:56"
+          "time": "2024-03-10T12:36:28"
         }
       ]
     },
     {
-      "name": "south",
-      "details": "offices in the north part of the city",
+      "name": "Stockholm south",
+      "details": "municipality in the north part of the city",
       "bids": [
         {
           "fixed_prices": [
@@ -228,7 +228,7 @@
             "bankruptcy": false
           },
           "winner": true,
-          "time": "2024-03-10T12:34:56"
+          "time": "2024-03-10T12:36:28"
         },
         {
           "fixed_prices": [
@@ -272,7 +272,7 @@
             "bankruptcy": false
           },
           "winner": true,
-          "time": "2024-03-10T12:34:56"
+          "time": "2024-03-10T12:36:28"
         },
         {
           "fixed_prices": [
@@ -316,7 +316,7 @@
             "bankruptcy": false
           },
           "winner": false,
-          "time": "2024-03-10T12:34:56"
+          "time": "2024-03-10T12:36:28"
         }
       ]
     }
@@ -325,5 +325,5 @@
   "details": "split in two lots, north and south",
   "format_version": "1",
   "organization_id": 1,
-  "time": "2024-03-10T12:34:56"
+  "time": "2024-03-10T12:36:28"
 }
