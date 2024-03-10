@@ -35,6 +35,7 @@ Stockholm. The one chosen as winner for northern Stockholm was one of the
 winners for the other part as well.
 """
 
+from datetime import datetime
 from pprint import pprint
 
 from pydantic import BaseModel
@@ -95,6 +96,7 @@ class Bid(BaseModel):
     hour_prices: list[ListPrice]
     organization: Supplier
     winner: bool = False
+    time: str
 
 
 class Lot(BaseModel):
@@ -153,6 +155,8 @@ class Procurement(BaseModel):
     We assume all text is in a single language.
     This is not ideal if the database
     and system should supports multiple countries.
+
+    Time is a string which conforms to the most widely used ISO standard.
     """
 
     lots: list[Lot]
@@ -160,6 +164,7 @@ class Procurement(BaseModel):
     details: str
     format_version: str = "1"
     organization_id: int = 1
+    time: str
 
     def check(self):
         """Check that all lots have at least one winning bid,
@@ -182,6 +187,8 @@ class Procurement(BaseModel):
 #############
 # Mock data #
 #############
+now = datetime.utcnow()
+time = datetime.isoformat(now, timespec="seconds")
 # North
 # bidder Alltvätt
 julie = ContactPerson(name="Julie Svensson", phone="12345", email="julie@alltvatt.se")
@@ -209,12 +216,14 @@ alltvatt_north_bid = Bid(
     hour_prices=[alltvatt_hourly],
     organization=alltvatt,
     winner=True,
+    time=time,
 )
 alltvatt_south_bid = Bid(
     fixed_prices=[alltvatt_carpet, alltvatt_window],
     hour_prices=[alltvatt_hourly],
     organization=alltvatt,
     winner=True,
+    time=time,
 )
 # bidder Städ AB
 anna = ContactPerson(name="Anna Svensson", phone="12345", email="anna@stad.se")
@@ -241,12 +250,14 @@ stad_ab_north_bid = Bid(
     fixed_prices=[stad_ab_carpet, stad_ab_window],
     hour_prices=[stad_ab_hourly],
     organization=stad_ab,
+    time=time,
 )
 stad_ab_south_bid = Bid(
     fixed_prices=[stad_ab_carpet, stad_ab_window],
     hour_prices=[stad_ab_hourly],
     organization=stad_ab,
     winner=True,
+    time=time,
 )
 # bidder Totalt rent AB
 peter = ContactPerson(name="Peter Ren", phone="12345", email="peter@totalt.se")
@@ -274,6 +285,7 @@ totalt_ab_bid = Bid(
     fixed_prices=[totalt_ab_carpet, totalt_ab_window],
     hour_prices=[totalt_ab_hourly],
     organization=totalt_ab,
+    time=time,
 )
 # bidder Rent av AB
 tomas = ContactPerson(name="Tomas Persson", phone="12345", email="tomas@rentav.se")
@@ -300,6 +312,7 @@ rentav_ab_bid = Bid(
     fixed_prices=[rentav_ab_carpet, rentav_ab_window],
     hour_prices=[rentav_ab_hourly],
     organization=rentav_ab,
+    time=time,
 )
 # bidder Cleaning House AB
 susann = ContactPerson(
@@ -329,6 +342,7 @@ cleaning_house_bid = Bid(
     fixed_prices=[cleaning_house_carpet, cleaning_house_window],
     hour_prices=[cleaning_house_hourly],
     organization=cleaning_house,
+    time=time,
 )
 # 4 suppliers in total
 # totalt_ab, rentav_ab only bid on the north lot
@@ -352,6 +366,7 @@ procurement = Procurement(
     name="Stockholm municipality cleaning procurement 2024",
     details="split in two lots, north and south",
     lots=[north, south],
+    time=time,
 )
 
 # Check and print
