@@ -32,6 +32,8 @@
             "adress": "Allvägen 1",
             "city": "Norrtälje",
             "postcode": "12345",
+            "country": "Sweden",
+            "country_wikidata": "Q34",
             "contact_persons": [
               {
                 "name": "Julie Svensson",
@@ -43,7 +45,8 @@
             "fskatt": true,
             "bankruptcy": false
           },
-          "winner": true
+          "winner": true,
+          "time": "2024-03-10T12:34:56"
         },
         {
           "fixed_prices": [
@@ -73,6 +76,8 @@
             "adress": "Allvägen 2",
             "city": "Norrtälje",
             "postcode": "12345",
+            "country": "Sweden",
+            "country_wikidata": "Q34",
             "contact_persons": [
               {
                 "name": "Anna Svensson",
@@ -84,7 +89,8 @@
             "fskatt": true,
             "bankruptcy": false
           },
-          "winner": false
+          "winner": false,
+          "time": "2024-03-10T12:34:56"
         },
         {
           "fixed_prices": [
@@ -114,6 +120,8 @@
             "adress": "Allvägen 3",
             "city": "Norrtälje",
             "postcode": "12345",
+            "country": "Sweden",
+            "country_wikidata": "Q34",
             "contact_persons": [
               {
                 "name": "Peter Ren",
@@ -125,7 +133,8 @@
             "fskatt": true,
             "bankruptcy": true
           },
-          "winner": false
+          "winner": false,
+          "time": "2024-03-10T12:34:56"
         },
         {
           "fixed_prices": [
@@ -155,6 +164,8 @@
             "adress": "Allvägen 4",
             "city": "Norrtälje",
             "postcode": "12345",
+            "country": "Sweden",
+            "country_wikidata": "Q34",
             "contact_persons": [
               {
                 "name": "Tomas Persson",
@@ -166,7 +177,8 @@
             "fskatt": true,
             "bankruptcy": false
           },
-          "winner": false
+          "winner": false,
+          "time": "2024-03-10T12:34:56"
         }
       ]
     },
@@ -202,6 +214,8 @@
             "adress": "Allvägen 1",
             "city": "Norrtälje",
             "postcode": "12345",
+            "country": "Sweden",
+            "country_wikidata": "Q34",
             "contact_persons": [
               {
                 "name": "Julie Svensson",
@@ -213,7 +227,8 @@
             "fskatt": true,
             "bankruptcy": false
           },
-          "winner": true
+          "winner": true,
+          "time": "2024-03-10T12:34:56"
         },
         {
           "fixed_prices": [
@@ -243,6 +258,8 @@
             "adress": "Allvägen 2",
             "city": "Norrtälje",
             "postcode": "12345",
+            "country": "Sweden",
+            "country_wikidata": "Q34",
             "contact_persons": [
               {
                 "name": "Anna Svensson",
@@ -254,7 +271,8 @@
             "fskatt": true,
             "bankruptcy": false
           },
-          "winner": true
+          "winner": true,
+          "time": "2024-03-10T12:34:56"
         },
         {
           "fixed_prices": [
@@ -284,6 +302,8 @@
             "adress": "Allvägen 4",
             "city": "Norrtälje",
             "postcode": "12345",
+            "country": "Sweden",
+            "country_wikidata": "Q34",
             "contact_persons": [
               {
                 "name": "Susann Petterson",
@@ -295,7 +315,8 @@
             "fskatt": false,
             "bankruptcy": false
           },
-          "winner": false
+          "winner": false,
+          "time": "2024-03-10T12:34:56"
         }
       ]
     }
@@ -303,5 +324,6 @@
   "name": "Stockholm municipality cleaning procurement 2024",
   "details": "split in two lots, north and south",
   "format_version": "1",
-  "organization_id": 1
+  "organization_id": 1,
+  "time": "2024-03-10T12:34:56"
 }
