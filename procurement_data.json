@@ -27,26 +27,9 @@
               "details": "cleaning of floors and emtyping trashcans"
             }
           ],
-          "organization": {
-            "name": "Alltvätt",
-            "adress": "Allvägen 1",
-            "city": "Norrtälje",
-            "postcode": "12345",
-            "country": "Sweden",
-            "country_wikidata": "Q34",
-            "contact_persons": [
-              {
-                "name": "Julie Svensson",
-                "email": "julie@alltvatt.se",
-                "phone": "12345"
-              }
-            ],
-            "organization_code": "123456-1213",
-            "fskatt": true,
-            "bankruptcy": false
-          },
+          "supplier": 1,
           "winner": true,
-          "time": "2024-03-10T12:36:28"
+          "time": "2024-03-10T12:57:55"
         },
         {
           "fixed_prices": [
@@ -71,26 +54,9 @@
               "details": "cleaning of floors and emtyping trashcans"
             }
           ],
-          "organization": {
-            "name": "Städ AB",
-            "adress": "Allvägen 2",
-            "city": "Norrtälje",
-            "postcode": "12345",
-            "country": "Sweden",
-            "country_wikidata": "Q34",
-            "contact_persons": [
-              {
-                "name": "Anna Svensson",
-                "email": "anna@stad.se",
-                "phone": "12345"
-              }
-            ],
-            "organization_code": "123456-1219",
-            "fskatt": true,
-            "bankruptcy": false
-          },
+          "supplier": 2,
           "winner": false,
-          "time": "2024-03-10T12:36:28"
+          "time": "2024-03-10T12:57:55"
         },
         {
           "fixed_prices": [
@@ -115,26 +81,9 @@
               "details": "cleaning of floors and emtyping trashcans"
             }
           ],
-          "organization": {
-            "name": "Totalt rent AB",
-            "adress": "Allvägen 3",
-            "city": "Norrtälje",
-            "postcode": "12345",
-            "country": "Sweden",
-            "country_wikidata": "Q34",
-            "contact_persons": [
-              {
-                "name": "Peter Ren",
-                "email": "peter@totalt.se",
-                "phone": "12345"
-              }
-            ],
-            "organization_code": "123456-1211",
-            "fskatt": true,
-            "bankruptcy": true
-          },
+          "supplier": 3,
           "winner": false,
-          "time": "2024-03-10T12:36:28"
+          "time": "2024-03-10T12:57:55"
         },
         {
           "fixed_prices": [
@@ -159,26 +108,9 @@
               "details": "cleaning of floors and emtyping trashcans"
             }
           ],
-          "organization": {
-            "name": "Rent av AB",
-            "adress": "Allvägen 4",
-            "city": "Norrtälje",
-            "postcode": "12345",
-            "country": "Sweden",
-            "country_wikidata": "Q34",
-            "contact_persons": [
-              {
-                "name": "Tomas Persson",
-                "email": "tomas@rentav.se",
-                "phone": "12345"
-              }
-            ],
-            "organization_code": "123456-1311",
-            "fskatt": true,
-            "bankruptcy": false
-          },
+          "supplier": 4,
           "winner": false,
-          "time": "2024-03-10T12:36:28"
+          "time": "2024-03-10T12:57:55"
         }
       ]
     },
@@ -209,26 +141,9 @@
               "details": "cleaning of floors and emtyping trashcans"
             }
           ],
-          "organization": {
-            "name": "Alltvätt",
-            "adress": "Allvägen 1",
-            "city": "Norrtälje",
-            "postcode": "12345",
-            "country": "Sweden",
-            "country_wikidata": "Q34",
-            "contact_persons": [
-              {
-                "name": "Julie Svensson",
-                "email": "julie@alltvatt.se",
-                "phone": "12345"
-              }
-            ],
-            "organization_code": "123456-1213",
-            "fskatt": true,
-            "bankruptcy": false
-          },
+          "supplier": 1,
           "winner": true,
-          "time": "2024-03-10T12:36:28"
+          "time": "2024-03-10T12:57:55"
         },
         {
           "fixed_prices": [
@@ -253,26 +168,9 @@
               "details": "cleaning of floors and emtyping trashcans"
             }
           ],
-          "organization": {
-            "name": "Städ AB",
-            "adress": "Allvägen 2",
-            "city": "Norrtälje",
-            "postcode": "12345",
-            "country": "Sweden",
-            "country_wikidata": "Q34",
-            "contact_persons": [
-              {
-                "name": "Anna Svensson",
-                "email": "anna@stad.se",
-                "phone": "12345"
-              }
-            ],
-            "organization_code": "123456-1219",
-            "fskatt": true,
-            "bankruptcy": false
-          },
+          "supplier": 2,
           "winner": true,
-          "time": "2024-03-10T12:36:28"
+          "time": "2024-03-10T12:57:55"
         },
         {
           "fixed_prices": [
@@ -297,26 +195,9 @@
               "details": "cleaning of floors and emtyping trashcans"
             }
           ],
-          "organization": {
-            "name": "Cleaning House AB",
-            "adress": "Allvägen 4",
-            "city": "Norrtälje",
-            "postcode": "12345",
-            "country": "Sweden",
-            "country_wikidata": "Q34",
-            "contact_persons": [
-              {
-                "name": "Susann Petterson",
-                "email": "susann@cleaning.se",
-                "phone": "12345"
-              }
-            ],
-            "organization_code": "123456-1211",
-            "fskatt": false,
-            "bankruptcy": false
-          },
+          "supplier": 5,
           "winner": false,
-          "time": "2024-03-10T12:36:28"
+          "time": "2024-03-10T12:57:55"
         }
       ]
     }
@@ -325,5 +206,102 @@
   "details": "split in two lots, north and south",
   "format_version": "1",
   "organization_id": 1,
-  "time": "2024-03-10T12:36:28"
+  "time": "2024-03-10T12:57:55",
+  "suppliers": [
+    {
+      "id": 1,
+      "name": "Alltvätt",
+      "adress": "Allvägen 1",
+      "city": "Norrtälje",
+      "postcode": "12345",
+      "country": "Sweden",
+      "country_wikidata": "Q34",
+      "contact_persons": [
+        {
+          "name": "Julie Svensson",
+          "email": "julie@alltvatt.se",
+          "phone": "12345"
+        }
+      ],
+      "organization_code": "123456-1213",
+      "fskatt": true,
+      "bankruptcy": false
+    },
+    {
+      "id": 2,
+      "name": "Städ AB",
+      "adress": "Allvägen 2",
+      "city": "Norrtälje",
+      "postcode": "12345",
+      "country": "Sweden",
+      "country_wikidata": "Q34",
+      "contact_persons": [
+        {
+          "name": "Anna Svensson",
+          "email": "anna@stad.se",
+          "phone": "12345"
+        }
+      ],
+      "organization_code": "123456-1219",
+      "fskatt": true,
+      "bankruptcy": false
+    },
+    {
+      "id": 4,
+      "name": "Rent av AB",
+      "adress": "Allvägen 4",
+      "city": "Norrtälje",
+      "postcode": "12345",
+      "country": "Sweden",
+      "country_wikidata": "Q34",
+      "contact_persons": [
+        {
+          "name": "Tomas Persson",
+          "email": "tomas@rentav.se",
+          "phone": "12345"
+        }
+      ],
+      "organization_code": "123456-1311",
+      "fskatt": true,
+      "bankruptcy": false
+    },
+    {
+      "id": 5,
+      "name": "Cleaning House AB",
+      "adress": "Allvägen 4",
+      "city": "Norrtälje",
+      "postcode": "12345",
+      "country": "Sweden",
+      "country_wikidata": "Q34",
+      "contact_persons": [
+        {
+          "name": "Susann Petterson",
+          "email": "susann@cleaning.se",
+          "phone": "12345"
+        }
+      ],
+      "organization_code": "123456-1211",
+      "fskatt": false,
+      "bankruptcy": false
+    },
+    {
+      "id": 3,
+      "name": "Totalt rent AB",
+      "adress": "Allvägen 3",
+      "city": "Norrtälje",
+      "postcode": "12345",
+      "country": "Sweden",
+      "country_wikidata": "Q34",
+      "contact_persons": [
+        {
+          "name": "Peter Ren",
+          "email": "peter@totalt.se",
+          "phone": "12345"
+        }
+      ],
+      "organization_code": "123456-1211",
+      "fskatt": true,
+      "bankruptcy": true
+    }
+  ]
 }

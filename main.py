@@ -64,6 +64,7 @@ class Supplier(BaseModel):
     developers tear their hair out in no time.
     """
 
+    id: int
     name: str
     adress: str
     city: str
@@ -94,7 +95,7 @@ class Bid(BaseModel):
 
     fixed_prices: list[ListPrice]
     hour_prices: list[ListPrice]
-    organization: Supplier
+    supplier: int
     winner: bool = False
     time: str
 
@@ -112,16 +113,6 @@ class Lot(BaseModel):
             if bid.winner is True:
                 return True
         return False
-
-    def check_organization_behind_winning_bids_have_fskatt(self):
-        for bid in self.get_winning_bids:
-            if not bid.organization.fskatt:
-                raise BidError(f"{bid.organization.name} is not registered for F-skatt")
-
-    def check_organization_behind_winning_bids_have_not_filed_for_bankruptcy(self):
-        for bid in self.get_winning_bids:
-            if bid.organization.bankruptcy:
-                raise BidError(f"{bid.organization.name} has filed for bankruptcy")
 
     @property
     def get_winning_bids(self):
@@ -157,6 +148,14 @@ class Procurement(BaseModel):
     and system should supports multiple countries.
 
     Time is a string which conforms to the most widely used ISO standard.
+
+    In my first approach the contact details and organization information was duplicated on each bid.
+    Using a deduplicated approach this could be avoided but
+    then we would need a catalog of organizations which perhaps would quickly go out of date.
+
+    Depending on the setup of the system there are ways to duplication of data and information
+    being out of date, e.g. by storing the information on suppliers on every procurement and
+    referring to a procurement unique supplier ID in the bids.
     """
 
     lots: list[Lot]
@@ -165,6 +164,25 @@ class Procurement(BaseModel):
     format_version: str = "1"
     organization_id: int = 1
     time: str
+    suppliers: list[Supplier]
+
+    def check_organization_behind_winning_bids_have_fskatt(self):
+        for lot in self.lots:
+            for bid in lot.get_winning_bids:
+                supplier_id = bid.supplier
+                for supplier in self.suppliers:
+                    if supplier.id == supplier_id:
+                        if not supplier.fskatt:
+                            raise BidError(f"{supplier.name} is not registered for F-skatt")
+
+    def check_organization_behind_winning_bids_have_not_filed_for_bankruptcy(self):
+        for lot in self.lots:
+            for bid in lot.get_winning_bids:
+                supplier_id = bid.supplier
+                for supplier in self.suppliers:
+                    if supplier.id == supplier_id:
+                        if supplier.bankruptcy:
+                            raise BidError(f"{supplier.name} has filed for bankruptcy")
 
     def check(self):
         """Check that all lots have at least one winning bid,
@@ -173,8 +191,8 @@ class Procurement(BaseModel):
         for lot in self.lots:
             if not lot.at_least_one_winning_bid:
                 raise LotError(f"Lot '{lot.name}' does not have a winning bid")
-            lot.check_organization_behind_winning_bids_have_fskatt()
-            lot.check_organization_behind_winning_bids_have_not_filed_for_bankruptcy()
+        self.check_organization_behind_winning_bids_have_fskatt()
+        self.check_organization_behind_winning_bids_have_not_filed_for_bankruptcy()
         print("All lots passed the checks")
 
     def print_winning_bids(self):
@@ -193,6 +211,7 @@ time = datetime.isoformat(now, timespec="seconds")
 # bidder Alltvätt
 julie = ContactPerson(name="Julie Svensson", phone="12345", email="julie@alltvatt.se")
 alltvatt = Supplier(
+    id=1,
     name="Alltvätt",
     adress="Allvägen 1",
     postcode="12345",
@@ -214,20 +233,21 @@ alltvatt_hourly = ListPrice(
 alltvatt_north_bid = Bid(
     fixed_prices=[alltvatt_carpet, alltvatt_window],
     hour_prices=[alltvatt_hourly],
-    organization=alltvatt,
+    supplier=alltvatt.id,
     winner=True,
     time=time,
 )
 alltvatt_south_bid = Bid(
     fixed_prices=[alltvatt_carpet, alltvatt_window],
     hour_prices=[alltvatt_hourly],
-    organization=alltvatt,
+    supplier=alltvatt.id,
     winner=True,
     time=time,
 )
 # bidder Städ AB
 anna = ContactPerson(name="Anna Svensson", phone="12345", email="anna@stad.se")
 stad_ab = Supplier(
+    id=2,
     name="Städ AB",
     adress="Allvägen 2",
     postcode="12345",
@@ -249,19 +269,21 @@ stad_ab_hourly = ListPrice(
 stad_ab_north_bid = Bid(
     fixed_prices=[stad_ab_carpet, stad_ab_window],
     hour_prices=[stad_ab_hourly],
-    organization=stad_ab,
+    supplier=stad_ab.id,
     time=time,
 )
 stad_ab_south_bid = Bid(
     fixed_prices=[stad_ab_carpet, stad_ab_window],
     hour_prices=[stad_ab_hourly],
-    organization=stad_ab,
+    supplier=stad_ab.id,
     winner=True,
     time=time,
 )
 # bidder Totalt rent AB
 peter = ContactPerson(name="Peter Ren", phone="12345", email="peter@totalt.se")
 totalt_ab = Supplier(
+    id=3,
+
     name="Totalt rent AB",
     adress="Allvägen 3",
     postcode="12345",
@@ -284,12 +306,14 @@ totalt_ab_hourly = ListPrice(
 totalt_ab_bid = Bid(
     fixed_prices=[totalt_ab_carpet, totalt_ab_window],
     hour_prices=[totalt_ab_hourly],
-    organization=totalt_ab,
+    supplier=totalt_ab.id,
     time=time,
 )
 # bidder Rent av AB
 tomas = ContactPerson(name="Tomas Persson", phone="12345", email="tomas@rentav.se")
 rentav_ab = Supplier(
+    id=4,
+
     name="Rent av AB",
     adress="Allvägen 4",
     postcode="12345",
@@ -311,7 +335,7 @@ rentav_ab_hourly = ListPrice(
 rentav_ab_bid = Bid(
     fixed_prices=[rentav_ab_carpet, rentav_ab_window],
     hour_prices=[rentav_ab_hourly],
-    organization=rentav_ab,
+    supplier=rentav_ab.id,
     time=time,
 )
 # bidder Cleaning House AB
@@ -319,6 +343,8 @@ susann = ContactPerson(
     name="Susann Petterson", phone="12345", email="susann@cleaning.se"
 )
 cleaning_house = Supplier(
+    id=5,
+
     name="Cleaning House AB",
     adress="Allvägen 4",
     postcode="12345",
@@ -341,7 +367,7 @@ cleaning_house_hourly = ListPrice(
 cleaning_house_bid = Bid(
     fixed_prices=[cleaning_house_carpet, cleaning_house_window],
     hour_prices=[cleaning_house_hourly],
-    organization=cleaning_house,
+    supplier=cleaning_house.id,
     time=time,
 )
 # 4 suppliers in total
@@ -367,6 +393,7 @@ procurement = Procurement(
     details="split in two lots, north and south",
     lots=[north, south],
     time=time,
+    suppliers=[alltvatt, stad_ab, rentav_ab, cleaning_house, totalt_ab]
 )
 
 # Check and print
