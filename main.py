@@ -100,12 +100,12 @@ class Lot(BaseModel):
                 return True
         return False
 
-    def check_winning_bids_have_fskatt(self):
+    def check_organization_behind_winning_bids_have_fskatt(self):
         for bid in self.get_winning_bids:
             if not bid.organization.fskatt:
                 raise BidError(f"{bid.organization.name} is not registered for F-skatt")
 
-    def check_winning_bids_have_not_filed_for_bankruptcy(self):
+    def check_organization_behind_winning_bids_have_not_filed_for_bankruptcy(self):
         for bid in self.get_winning_bids:
             if bid.organization.bankruptcy:
                 raise BidError(f"{bid.organization.name} has filed for bankruptcy")
@@ -157,8 +157,8 @@ class Procurement(BaseModel):
         for lot in self.lots:
             if not lot.at_least_one_winning_bid:
                 raise LotError(f"Lot '{lot.name}' does not have a winning bid")
-            lot.check_winning_bids_have_fskatt()
-            lot.check_winning_bids_have_not_filed_for_bankruptcy()
+            lot.check_organization_behind_winning_bids_have_fskatt()
+            lot.check_organization_behind_winning_bids_have_not_filed_for_bankruptcy()
         print("All lots passed the checks")
 
     def print_winning_bids(self):
